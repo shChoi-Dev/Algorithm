@@ -1,12 +1,57 @@
-package com.mc.algorithm.d_datastructure;
+package com.mc.algorithm.d_datastructure.list;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+import com.mc.algorithm.d_datastructure.dto.School;
 
 public class Run {
 
 	public static void main(String[] args) {
 		
 		System.out.println(init());
-		testGet();
-		testRemove();
+		//testGet();
+		//testRemove();
+		//testForEach();
+		//testSet();
+		testSort();
+	}
+
+	private static void testSort() {
+		School seoulUniv = new School("서울대", "관악구", "대학교");
+		School yeonsaeUniv = new School("연세대", "서울", "대학교");
+		School minsa = new School("민사고", "대전", "고등학교");
+		School multicampus = new School("멀티캠퍼스", "역삼", "아카데미");
+		
+		ArrayList<School> schools = new ArrayList<School>();
+		schools.add(seoulUniv);
+		schools.add(minsa);
+		schools.add(multicampus);
+		schools.add(yeonsaeUniv);
+		
+		
+		// 1. 이름을 기준으로 오름차순
+		// 2. 레벨을 기준으로 오름차순 정렬, 대학이 같다면 이름으로 내림차순 정렬
+		Collections.sort(schools);
+		System.out.println(schools);
+		
+	}
+
+	private static void testForEach() {
+		// 제어반전 IOC
+		_ArrayList<Integer> list = init();
+		for (Integer integer : list) {
+			System.out.println(integer);
+		}	
+	}
+	// Iterable
+	// hasNext, next
+	
+	
+	private static void testSet() {
+		_ArrayList<Integer> list = init();
+		System.out.println(list.set(0, 10));
+		System.out.println(list);
 	}
 
 	private static void testRemove() {

@@ -1,8 +1,9 @@
-package com.mc.algorithm.d_datastructure;
+package com.mc.algorithm.d_datastructure.list;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
-public class _ArrayList<E> {
+public class _ArrayList<E> implements Iterable<E> {
 	
 	private Object[] elementData;
 	private int size;
@@ -73,6 +74,51 @@ public class _ArrayList<E> {
 	public String toString() {
 		return "_ArrayList [elementData=" + Arrays.toString(elementData) + "]";
 	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public Iterator<E> iterator() {
+		return new Iterator<E>() {
+
+			private int pointer = 0;
+			
+			@Override
+			public boolean hasNext() {
+				return pointer < size ? true : false;
+			}
+
+			@Override
+			public E next() {
+				E res = (E) elementData[pointer];
+				pointer++;
+				return res;
+			}
+			
+		};
+	}
 	
+//	@Override
+//	public Iterator<E> iterator() {
+//		return new _Iterator();
+//	}
+	
+//	@SuppressWarnings("unchecked")
+//	class _Iterator implements Iterator<E>{
+//		
+//		private int pointer = 0;
+//		
+//		@Override
+//		public boolean hasNext() {
+//			return pointer < size ? true : false;
+//		}
+//
+//		@Override
+//		public E next() {
+//			E res = (E) elementData[pointer];
+//			pointer++;
+//			return res;
+//		}
+//		
+//	}
 	
 }
