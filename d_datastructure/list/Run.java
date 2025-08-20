@@ -12,9 +12,9 @@ public class Run {
 		System.out.println(init());
 		//testGet();
 		//testRemove();
-		//testForEach();
+		testForEach();
 		//testSet();
-		testSort();
+		//testSort();
 	}
 
 	private static void testSort() {
@@ -33,13 +33,14 @@ public class Run {
 		// 1. 이름을 기준으로 오름차순
 		// 2. 레벨을 기준으로 오름차순 정렬, 대학이 같다면 이름으로 내림차순 정렬
 		Collections.sort(schools);
+		Collections.sort(schools, (o1, o2) -> o1.getName().compareTo(o2.getName()));
 		System.out.println(schools);
 		
 	}
 
 	private static void testForEach() {
 		// 제어반전 IOC
-		_ArrayList<Integer> list = init();
+		_LinkedList<Integer> list = init();
 		for (Integer integer : list) {
 			System.out.println(integer);
 		}	
@@ -49,13 +50,13 @@ public class Run {
 	
 	
 	private static void testSet() {
-		_ArrayList<Integer> list = init();
+		_LinkedList<Integer> list = init();
 		System.out.println(list.set(0, 10));
 		System.out.println(list);
 	}
 
 	private static void testRemove() {
-		_ArrayList<Integer> list = init();
+		_LinkedList<Integer> list = init();
 		for (int i = 5; i < 8; i++) {
 			list.remove(i);
 		}
@@ -63,15 +64,15 @@ public class Run {
 	}
 
 	private static void testGet() {
-		_ArrayList<Integer> list = init();
+		_LinkedList<Integer> list = init();
 		for (int i = 5; i < 8; i++) {
 			System.out.println(list.get(i));
 		}
 		
 	}
 
-	private static _ArrayList<Integer> init() {
-		_ArrayList<Integer> list = new _ArrayList<Integer>();
+	private static _LinkedList<Integer> init() {
+		_LinkedList<Integer> list = new _LinkedList<Integer>();
 		for (int i = 0; i < 15; i++) {
 			list.add(i);
 		}
