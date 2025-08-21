@@ -6,7 +6,7 @@ import java.util.Iterator;
 import com.mc.algorithm.d_datastructure.list.Node;
 
 @SuppressWarnings("unchecked")
-public class _HashSet_P2<E> {
+public class _HashSet_P2<E> implements Iterable<E> {
 	
 	private int arraySize = 3;
 	private Object[] table;
@@ -131,6 +131,44 @@ public class _HashSet_P2<E> {
 		return sb.toString();
 	}
 
+	//iterator
+	@Override
+	public Iterator<E> iterator() {		
+		return new Iterator<E>() {
+
+			private int cnt = 0;
+			private int rowPointer = -1;
+			private Node<E> prev = new Node<E>(null);
+			
+			@Override
+			public boolean hasNext() {
+				return cnt < size;
+			}
+
+			@Override
+			public E next() {
+				if(prev.next() != null) {
+					E data = prev.data();
+					prev = prev.next();
+					cnt++;
+					return data;
+				}
+				
+				do {
+					rowPointer++;
+				}while(table[rowPointer] == null);
+				
+				prev = (Node<E>) table[rowPointer];
+				E data = prev.data();
+				cnt++;
+				return data;
+			}
+			
+		};
+	}
+	
+	
+	
 	
 
 	
