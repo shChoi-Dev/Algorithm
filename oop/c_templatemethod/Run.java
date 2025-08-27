@@ -2,6 +2,9 @@ package com.mc.oop.c_templatemethod;
 
 import java.util.Scanner;
 
+// TemplateMethod 패턴 : 상속을 이용
+// 다형성을 사용한 설계를 위해 인터페이스(public mehotd)를 재사용하는 경우
+// 컴파일 시점에 변경되는 로직이 결정이 된다. (early binding, static binding)
 public class Run {
 	
 	// Player 캐릭터의 공격 가중치 	 : atk/2 ~ atk * 3

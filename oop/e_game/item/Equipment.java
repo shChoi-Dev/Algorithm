@@ -1,16 +1,16 @@
-package com.mc.oop.d_strategy.item;
+package b_designpattern.com.mc.oop.e_game.item;
 
 import java.util.Random;
 
 public class Equipment implements DamageWeight{
-	
+
 	private String name;
 	private int atk;
 	private int def;
 	private Slot slot;
 	private String effect;
 	private Random random = new Random();
-
+	
 	public Equipment(String name, int atk, int def, Slot slot, String effect) {
 		super();
 		this.name = name;
@@ -34,6 +34,7 @@ public class Equipment implements DamageWeight{
 		return this.slot;
 	}
 
+
 	public String getEffect() {
 		return effect;
 	}
@@ -41,7 +42,8 @@ public class Equipment implements DamageWeight{
 	public String getName() {
 		return name;
 	}
-	
-	
 
+
+	
+	
 }

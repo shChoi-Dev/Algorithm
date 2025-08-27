@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.mc.coffeemanager.domain.account.Account;
 import com.mc.coffeemanager.domain.coffee.Coffee;
 import com.mc.coffeemanager.domain.order.Order;
+import com.mc.coffeemanager.domain.payment.Payment;
 import com.mc.coffeemanager.domain.sale.SaleContext;
 
 // presentation : 표현계층
@@ -19,7 +20,6 @@ public class Menu {
  	public Menu(Coffee[] coffees) {
 		super();
 		this.coffees = coffees;
-		this.account = account;
 	}
 
 	public void menu(){
@@ -84,21 +84,19 @@ public class Menu {
 
 	private void registOrder(int drinkNo, int orderCnt) {
 		// TODO 주문객체 생성 및 context 로 전달
-		Order order = Order.createOrder(coffees[drinkNo], orderCnt, account); 
-		// 잔고가 부족해 주문생성에 실패한 경우
-		// 판매자가 주문을 취소해 주문 생성에 실패한 경우
-		// 에 따라 다른 log를 콘솔에 출력할 수 있도록 코드를 개선
+		Order order = Order.createOrder(coffees[drinkNo], orderCnt); 
+		
 		if(order.getStatus().isFail()) {
 			System.out.println("system : " + order.getStatus().desc());
 			return;
 		}
 		
-		saleContext.init(order);
+		Payment payment = saleContext.init(order);
 		
 		System.out.println("\n 제품명 : " + coffees[drinkNo].getName() 
 				+ "\n 판매가 : " + coffees[drinkNo].getPrice()
 				+ "\n 판매수량 : " + orderCnt 
-				+ "\n 결재금액 : " + orderCnt * coffees[drinkNo].getPrice()
+				+ "\n 결재금액 : " + payment.getPaymentPrice()
 				+ "\n 남은 재고 : "+ coffees[drinkNo].getStock());
 	}
 	

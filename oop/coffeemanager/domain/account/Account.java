@@ -11,6 +11,7 @@ public class Account {
 		if(instance == null) {
 			instance = new Account(balance);
 		}
+		
 		return instance;
 	}
 	
@@ -18,7 +19,7 @@ public class Account {
 		return getInstance(0);
 	}
 	
-	public Account(int balance) {
+	private Account(int balance) {
 		super();
 		this.balance = balance;
 	}
