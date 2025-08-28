@@ -1,9 +1,9 @@
-package b_designpattern.com.mc.oop.j_adaptor.api.google;
+package com.mc.oop.j_adaptor.api.google;
 
 public class GoogleApi {
-	
+
 	public GoogleProfile getProfile(String token) {
-		return new GoogleProfile("안녕도", "aa@google.com");
+		return new GoogleProfile("하명도", "aaa@bbb.com");
 	}
 	
 }

@@ -1,6 +1,6 @@
-package b_designpattern.com.mc.oop.i_proxy;
+package com.mc.oop.i_proxy;
 
-public class DeveloperProxy implements Developer {
+public class DeveloperProxy implements Developer{
 
 	private Developer developer;
 	
@@ -11,17 +11,15 @@ public class DeveloperProxy implements Developer {
 
 	@Override
 	public void develop() {
-		System.out.println("[system] 출근카드를 찍는다.");
+		System.out.println("[system] 출근 카드를 찍는다.");
 		
 		try {
-			//핵심 로직
+			// 핵심로직
 			developer.develop();
 		} catch (Exception e) {
-			System.out.println("앗 쉬는날이었다.");
-		} finally {
+			System.out.println("앗 쉬는 날이었다.");
+		}finally {
 			System.out.println("집에 간다.");
 		}
-		
 	}
-	
 }

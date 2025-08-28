@@ -1,9 +1,8 @@
-package b_designpattern.com.mc.oop.j_adaptor.api.naver;
+package com.mc.oop.j_adaptor.api.naver;
 
-// {"name":"naver","mail":"aa@bb.com"}
-
+// {"name":"kakao","mail":"aaa@bbb.com"}
 public record NaverProfile(
-		String username,
+		String name,
 		String mail
 		) {
 
