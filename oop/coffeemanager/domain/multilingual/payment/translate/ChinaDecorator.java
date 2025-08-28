@@ -2,23 +2,24 @@ package com.mc.coffeemanager.domain.multilingual.payment.translate;
 
 import com.mc.coffeemanager.domain.payment.Payment;
 
-public class ChinaDecorator extends PaymentDecorator {
+public class ChinaDecorator extends PaymentDecorator{
 
 	public ChinaDecorator(Translatable<Payment> target) {
 		super(target);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String translate() {
-		// TODO Auto-generated method stub
-		return null;
+		String info = target.translate();
+		Payment payment = origin();
+		info += "\n" + payment.getOrderName() + "杯"
+				+ "\n " + payment.getPaymentPrice()/200 + " wian";
+		return info;
 	}
 
 	@Override
 	public Payment origin() {
-		// TODO Auto-generated method stub
-		return null;
+		return target.origin();
 	}
 
 }

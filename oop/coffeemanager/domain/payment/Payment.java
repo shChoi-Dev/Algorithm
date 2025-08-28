@@ -2,9 +2,10 @@ package com.mc.coffeemanager.domain.payment;
 
 import com.mc.coffeemanager.domain.account.Account;
 import com.mc.coffeemanager.domain.discount.policy.DiscountPolicy;
+import com.mc.coffeemanager.domain.multilingual.payment.translate.Translatable;
 import com.mc.coffeemanager.domain.order.Order;
 
-public class Payment {
+public class Payment implements Translatable<Payment>{
 	
 	private Order order;
 	private int paymentPrice;
@@ -27,5 +28,21 @@ public class Payment {
 	public void proceed() {
 		Account account = Account.getInstance();
 		account.registSales(paymentPrice);
+	}
+
+	@Override
+	public String translate() {
+		String info = order.getName() + "잔"
+					+ "\n" + paymentPrice + "원";
+		return info;
+	}
+
+	public String getOrderName() {
+		return order.getName();
+	}
+
+	@Override
+	public Payment origin() {
+		return this;
 	}
 }
