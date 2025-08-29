@@ -1,6 +1,5 @@
 package com.mc.musiccoordinator.infra.qrcode;
 
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -15,7 +14,7 @@ import com.mc.musiccoordinator.infra.qrcode.dto.QrCodeDTO;
 public class QrCodeGenerator {
 	
 	public void generate(QrCodeDTO dto) throws WriterException {
-		try(FileOutputStream fos = new FileOutputStream(dto.fileName())) {
+		try(FileOutputStream fos = new FileOutputStream(dto.fileName() + "." + dto.format())) {
 	        QRCodeWriter qrCodeWriter = new QRCodeWriter();
 	        BitMatrix bitMatrix = qrCodeWriter.encode(dto.text(), BarcodeFormat.QR_CODE, 300, 300);
 	        MatrixToImageWriter.writeToStream(bitMatrix, dto.format(), fos);
